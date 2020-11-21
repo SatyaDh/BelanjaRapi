@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BelanjaRapi</string>
+    <string name="shopping_list">Daftar Aktivitas Belanja</string>
+    <string name="button_edit">Ubah</string>
+    <string name="static_title">Judul Aktivitas</string>
+    <string name="static_item_name">Nama Barang</string>
+    <string name="static_locale">Lokasi</string>
+    <string name="static_date">Tanggal</string>
+    <string name="button_save">Simpan</string>
+</resources>

@@ -13,7 +13,6 @@ import is.ac.ui.cs.mobileprogramming.satyadharma.belanjarapi.repository.BarangBe
 
 public class BarangBelanjaanViewModel extends AndroidViewModel {
     private BarangBelanjaanRepository repository;
-    private LiveData<List<BarangBelanjaan>> allBarangBelanjaan;
 
     public BarangBelanjaanViewModel(@NonNull Application application) {
         super(application);

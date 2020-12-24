@@ -13,7 +13,6 @@ import is.ac.ui.cs.mobileprogramming.satyadharma.belanjarapi.repository.TempatBe
 
 public class TempatBelanjaViewModel extends AndroidViewModel {
     private TempatBelanjaRepository repository;
-    private LiveData<List<TempatBelanja>> allTempatBelanja;
 
     public TempatBelanjaViewModel(@NonNull Application application) {
         super(application);

@@ -1,5 +1,6 @@
 package is.ac.ui.cs.mobileprogramming.satyadharma.belanjarapi.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,6 +41,17 @@ public class ShoppingListFragment extends Fragment {
             @Override
             public void onChanged(List<AktivitasBelanja> aktivitasBelanjas) {
                 mainAdapter.setAktivitasBelanjas(aktivitasBelanjas);
+            }
+        });
+        mainAdapter.SetOnActListener(new MainAdapter.OnActListener() {
+            @Override
+            public void onActClick(AktivitasBelanja aktivitasBelanja) {
+                Intent intent = new Intent(getActivity(),DetailsActivity.class);
+                intent.putExtra("judul", aktivitasBelanja.getJudul_pembelian());
+                intent.putExtra("barang", aktivitasBelanja.getBarang_pembelian().getNama());
+                intent.putExtra("lokasi", aktivitasBelanja.getTempat_belanja().getNama());
+                intent.putExtra("tanggal", aktivitasBelanja.getTanggal_belanja());
+                startActivity(intent);
             }
         });
 

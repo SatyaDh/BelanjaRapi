@@ -20,12 +20,13 @@ public class AktivitasBelanja {
     @ColumnInfo(name = "tempat_belanja")
     private TempatBelanja tempat_belanja;
 
-    public AktivitasBelanja (String judul_pembelian, BarangBelanjaan barang_pembelian, Date tanggal_belanja ,TempatBelanja tempat_belanja){
+    public AktivitasBelanja (String judul_pembelian, BarangBelanjaan barang_pembelian, Date tanggal_belanja ,TempatBelanja tempat_belanja
+    , Status status){
         this.judul_pembelian = judul_pembelian;
         this.barang_pembelian = barang_pembelian;
         this.tanggal_belanja = tanggal_belanja;
-        this.status = Status.PENDING;
         this.tempat_belanja = tempat_belanja;
+        this.status = status;
     }
 
 

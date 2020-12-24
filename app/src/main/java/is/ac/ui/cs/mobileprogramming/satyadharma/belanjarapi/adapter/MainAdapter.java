@@ -1,5 +1,6 @@
 package is.ac.ui.cs.mobileprogramming.satyadharma.belanjarapi.adapter;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -23,6 +24,7 @@ import is.ac.ui.cs.mobileprogramming.satyadharma.belanjarapi.model.AktivitasBela
 
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainHolder> {
 private List<AktivitasBelanja> aktivitasBelanjas = new ArrayList<>();
+private OnActListener listener;
 
     @NonNull
     @Override
@@ -53,7 +55,7 @@ private List<AktivitasBelanja> aktivitasBelanjas = new ArrayList<>();
         notifyDataSetChanged();
     }
 
-    class MainHolder extends RecyclerView.ViewHolder{
+    class MainHolder extends RecyclerView.ViewHolder {
         private TextView textViewTitle;
         private TextView textViewItemName;
         private TextView textViewStatus;
@@ -69,7 +71,26 @@ private List<AktivitasBelanja> aktivitasBelanjas = new ArrayList<>();
             textViewStatus = itemView.findViewById(R.id.text_view_status);
             imageViewLocaleImg = itemView.findViewById(R.id.image_view_locale_img);
             textViewLocaleName = itemView.findViewById(R.id.text_view_locale_name);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if (listener != null && position != RecyclerView.NO_POSITION) {
+                        listener.onActClick(aktivitasBelanjas.get(position));
+                    }
+                }
+            });
         }
+
+    }
+
+    public interface OnActListener{
+        void onActClick (AktivitasBelanja aktivitasBelanja);
+    }
+
+    public void SetOnActListener(OnActListener listener){
+        this.listener = listener;
     }
 
 

@@ -1,6 +1,7 @@
 package is.ac.ui.cs.mobileprogramming.satyadharma.belanjarapi.repository;
 
 import android.app.Application;
+import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
 
@@ -24,33 +25,60 @@ public class AktivitasBelanjaRepository {
     }
 
     public void insertAktivitasBelanja(AktivitasBelanja aktivitasBelanja){
-        executor.execute(new Runnable() {
-            @Override
-            public void run() {
-                aktivitasBelanjaDAO.insertAktivitasBelanja(aktivitasBelanja);
-            }
-        });
+        new InsertActBAsyncTask(aktivitasBelanjaDAO).execute(aktivitasBelanja);
     }
     public void updateAktivitasBelanja(AktivitasBelanja aktivitasBelanja){
-        executor.execute(new Runnable() {
-            @Override
-            public void run() {
-                aktivitasBelanjaDAO.updateAktivitasBelanja(aktivitasBelanja);
-            }
-        });
+        new UpdateActBAsyncTask(aktivitasBelanjaDAO).execute(aktivitasBelanja);
 
     }
     public void deleteAktivitasBelanja(AktivitasBelanja aktivitasBelanja){
-        executor.execute(new Runnable() {
-            @Override
-            public void run() {
-                aktivitasBelanjaDAO.deleteAktivitasBelanja(aktivitasBelanja);
-            }
-        });
-
+        new DeleteActBAsyncTask(aktivitasBelanjaDAO).execute(aktivitasBelanja);
     }
 
     public LiveData<List<AktivitasBelanja>> getAllAktivitasBelanja() {
         return allAktivitasBelanja;
     }
+
+    private static class InsertActBAsyncTask extends AsyncTask<AktivitasBelanja, Void, Void>{
+        private AktivitasBelanjaDAO aktivitasBelanjaDAO;
+
+        private InsertActBAsyncTask(AktivitasBelanjaDAO aktivitasBelanjaDAO){
+            this.aktivitasBelanjaDAO = aktivitasBelanjaDAO;
+        }
+
+        @Override
+        protected Void doInBackground(AktivitasBelanja... aktivitasBelanjas) {
+            aktivitasBelanjaDAO.insertAktivitasBelanja(aktivitasBelanjas[0]);
+            return null;
+        }
+    }
+    private static class UpdateActBAsyncTask extends AsyncTask<AktivitasBelanja, Void, Void>{
+        private AktivitasBelanjaDAO aktivitasBelanjaDAO;
+
+        private UpdateActBAsyncTask(AktivitasBelanjaDAO aktivitasBelanjaDAO){
+            this.aktivitasBelanjaDAO = aktivitasBelanjaDAO;
+        }
+
+        @Override
+        protected Void doInBackground(AktivitasBelanja... aktivitasBelanjas) {
+            aktivitasBelanjaDAO.updateAktivitasBelanja(aktivitasBelanjas[0]);
+            return null;
+        }
+    }
+
+    private static class DeleteActBAsyncTask extends AsyncTask<AktivitasBelanja, Void, Void>{
+        private AktivitasBelanjaDAO aktivitasBelanjaDAO;
+
+        private DeleteActBAsyncTask(AktivitasBelanjaDAO aktivitasBelanjaDAO){
+            this.aktivitasBelanjaDAO = aktivitasBelanjaDAO;
+        }
+
+        @Override
+        protected Void doInBackground(AktivitasBelanja... aktivitasBelanjas) {
+            aktivitasBelanjaDAO.deleteAktivitasBelanja(aktivitasBelanjas[0]);
+            return null;
+        }
+    }
+
+
 }

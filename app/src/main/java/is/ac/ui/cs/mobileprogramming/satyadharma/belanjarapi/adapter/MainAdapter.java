@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -62,6 +63,8 @@ private OnActListener listener;
         private TextView textViewDate;
         private ImageView imageViewLocaleImg;
         private TextView textViewLocaleName;
+        private Button detailsButton;
+        private Button timerButton;
 
         public MainHolder (View itemView){
             super(itemView);
@@ -71,8 +74,10 @@ private OnActListener listener;
             textViewStatus = itemView.findViewById(R.id.text_view_status);
             imageViewLocaleImg = itemView.findViewById(R.id.image_view_locale_img);
             textViewLocaleName = itemView.findViewById(R.id.text_view_locale_name);
+            detailsButton = itemView.findViewById(R.id.button_details);
+            timerButton = itemView.findViewById(R.id.button_start_timer);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
+            detailsButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     int position = getAdapterPosition();
@@ -81,12 +86,24 @@ private OnActListener listener;
                     }
                 }
             });
+            timerButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if (listener != null && position != RecyclerView.NO_POSITION) {
+                        listener.onTimerClick(aktivitasBelanjas.get(position));
+                    }
+                }
+            });
+
+
         }
 
     }
 
     public interface OnActListener{
         void onActClick (AktivitasBelanja aktivitasBelanja);
+        void onTimerClick(AktivitasBelanja aktivitasBelanja);
     }
 
     public void SetOnActListener(OnActListener listener){

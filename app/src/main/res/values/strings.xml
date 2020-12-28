@@ -6,5 +6,7 @@
     <string name="static_item_name">Item Name</string>
     <string name="static_locale">Location</string>
     <string name="static_date">Date</string>
+    <string name="button_start">Start</string>
+    <string name="button_details">Details</string>
     <string name="button_save">Save</string>
 </resources>

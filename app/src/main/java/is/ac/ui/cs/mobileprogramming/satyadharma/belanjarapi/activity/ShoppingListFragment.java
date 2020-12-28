@@ -53,6 +53,11 @@ public class ShoppingListFragment extends Fragment {
                 intent.putExtra("tanggal", aktivitasBelanja.getTanggal_belanja());
                 startActivity(intent);
             }
+
+            @Override
+            public void onTimerClick(AktivitasBelanja aktivitasBelanja) {
+
+            }
         });
 
         return v;

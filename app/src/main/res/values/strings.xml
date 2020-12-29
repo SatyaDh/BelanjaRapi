@@ -5,6 +5,7 @@
     <string name="static_title">Activity Title</string>
     <string name="static_item_name">Item Name</string>
     <string name="static_locale">Location</string>
+    <string name="static_timer">Time Remaining:</string>
     <string name="static_date">Date</string>
     <string name="button_start">Start</string>
     <string name="button_details">Details</string>

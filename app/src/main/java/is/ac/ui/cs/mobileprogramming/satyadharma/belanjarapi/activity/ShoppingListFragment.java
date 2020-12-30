@@ -96,6 +96,7 @@ public class ShoppingListFragment extends Fragment {
         requireActivity().unregisterReceiver(br);
     }
 
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();

@@ -1,8 +1,11 @@
 package is.ac.ui.cs.mobileprogramming.satyadharma.belanjarapi.adapter;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -42,7 +46,17 @@ private OnActListener listener;
         holder.textViewItemName.setText(current.getBarang_pembelian().getNama());
         holder.textViewDate.setText(new SimpleDateFormat("dd.MM.yyyy").format(current.getTanggal_belanja()));
         holder.textViewStatus.setText(current.getStatus().name());
-        new DownloadImageTask(holder).execute(current.getTempat_belanja().getImage_url());
+        if (checkConnection(holder.imageViewLocaleImg.getContext())) {
+            new DownloadImageTask(holder).execute(current.getTempat_belanja().getImage_url());
+        }
+        else {
+            Context context = holder.imageViewLocaleImg.getContext();
+            CharSequence text = "No internet connection, cannot load file!";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
         holder.textViewLocaleName.setText(current.getTempat_belanja().getNama());
     }
 
@@ -138,5 +152,15 @@ private OnActListener listener;
             mainHolder.imageViewLocaleImg.setImageBitmap(res);
         }
     }
+
+    public boolean checkConnection (Context context){
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+
+    }
+
+
 
 }

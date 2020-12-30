@@ -10,4 +10,7 @@
     <string name="button_start">Start</string>
     <string name="button_details">Details</string>
     <string name="button_save">Save</string>
+    <string name="notification">Name</string>
+    <string name="notification_desc">Desc</string>
+
 </resources>

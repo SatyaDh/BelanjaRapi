@@ -12,5 +12,7 @@
     <string name="button_save">Save</string>
     <string name="notification">Name</string>
     <string name="notification_desc">Desc</string>
+    <string name="perm_title">Permission needed</string>
+    <string name="perm_exp">This permission is needed for accessing and editing the calendar for notifying about your shopping schedule</string>
 
 </resources>

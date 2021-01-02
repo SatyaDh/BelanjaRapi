@@ -41,7 +41,7 @@ public class TimerService extends Service {
         noti = new NotificationCompat.Builder(getApplicationContext(),CHANNEL_ID)
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentText("Done!")
-                .setContentInfo("Your Shopping should be done by now!")
+                .setContentText("Your Shopping should be done by now!")
                 .setContentIntent(pending)
                 .setAutoCancel(true)
                 .build();

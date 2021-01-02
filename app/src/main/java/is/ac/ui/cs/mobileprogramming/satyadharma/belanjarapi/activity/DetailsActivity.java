@@ -27,6 +27,7 @@ public class DetailsActivity extends AppCompatActivity{
         detailsLocationName = findViewById(R.id.details_view_location_name);
         detailsDate = findViewById(R.id.details_view_date);
 
+        //call intent from ShoppingListFragment
         Intent intent = getIntent();
 
         if (intent.hasExtra("judul")){

@@ -13,5 +13,7 @@
     <string name="button_save">Simpan</string>
     <string name="notification">Name</string>
     <string name="notification_desc">Desc</string>
+    <string name="perm_title">Butuh izin</string>
+    <string name="perm_exp">Diperlukan izin untuk melakukan akses ke calendar untuk mengingatkan akan jadwal belanja</string>
 
 </resources>
